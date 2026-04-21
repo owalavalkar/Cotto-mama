@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotto Mama – Sweet Little Styles</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f9e4e4;
+    --mint: #d6f0e8;
+    --butter: #fdf3d0;
+    --lavender: #e8e0f7;
+    --peach: #fde8d8;
+    --rose: #e8a0a0;
+    --sage: #7abca0;
+    --lilac: #9b84cc;
+    --warm: #e8b87a;
+    --text: #4a3728;
+    --muted: #9a8880;
+    --white: #fffdf9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,253,249,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1.5px solid #f0e8e0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 70px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--rose); }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links li a {
+    text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    color: var(--muted);
+    transition: color .2s;
+    cursor: pointer;
+  }
+  .nav-links li a:hover { color: var(--text); }
+
+  .nav-actions { display: flex; gap: 16px; align-items: center; }
+
+  .nav-btn {
+    background: var(--rose);
+    color: white;
+    border: none; border-radius: 40px;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer; transition: opacity .2s, transform .15s;
+  }
+  .nav-btn:hover { opacity: .85; transform: translateY(-1px); }
+
+  .cart-icon {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--butter);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 16px;
+    position: relative;
+    transition: background .2s;
+  }
+  .cart-icon:hover { background: #f7e8b0; }
+  .cart-badge {
+    position: absolute; top: -4px; right: -4px;
+    background: var(--rose); color: white;
+    font-size: 10px; font-weight: 600;
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── PAGES ───────────────────────────────── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ────────────────────────────────── */
+  .hero {
+    min-height: 88vh;
+    background: linear-gradient(135deg, var(--blush) 0%, var(--butter) 50%, var(--mint) 100%);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 60px 80px;
+    gap: 40px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(232,160,160,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -60px; left: 30%;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(122,188,160,0.15);
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--lilac);
+    border-radius: 40px;
+    padding: 6px 18px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .5px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px; line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--rose); font-style: italic; }
+
+  .hero p {
+    font-size: 17px; color: var(--muted);
+    line-height: 1.7; max-width: 420px;
+    margin-bottom: 36px;
+  }
+
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--text);
+    color: white;
+    border: none; border-radius: 40px;
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-primary:hover { background: #3a2a1c; transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--rose);
+    border-radius: 40px;
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-outline:hover { background: var(--blush); }
+
+  .hero-visual {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; position: relative; z-index: 2;
+  }
+
+  .hero-card {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-card:first-child { grid-column: 1 / -1; height: 220px; }
+  .hero-card:not(:first-child) { height: 160px; }
+
+  .hero-card img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .hero-pill {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(255,253,249,0.9);
+    border-radius: 40px;
+    padding: 6px 14px;
+    font-size: 12px; font-weight: 500;
+    color: var(--text);
+  }
+
+  /* ── MARQUEE ─────────────────────────────── */
+  .marquee-wrap {
+    background: var(--text);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; gap: 48px;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track span {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px; font-weight: 400;
+    letter-spacing: .5px;
+  }
+  .marquee-track .dot { color: var(--rose); }
+
+  /* ── SECTION HEADER ──────────────────────── */
+  .section-head {
+    text-align: center; padding: 64px 48px 40px;
+  }
+  .section-head .eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; color: var(--text);
+    margin-bottom: 12px;
+  }
+  .section-head p {
+    color: var(--muted); font-size: 16px;
+    max-width: 500px; margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── CATEGORIES ──────────────────────────── */
+  .categories {
+    padding: 0 48px 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .cat-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(74,55,40,0.1); }
+
+  .cat-card:nth-child(1) { background: var(--blush); }
+  .cat-card:nth-child(2) { background: var(--mint); }
+  .cat-card:nth-child(3) { background: var(--butter); }
+  .cat-card:nth-child(4) { background: var(--lavender); }
+
+  .cat-emoji { font-size: 40px; margin-bottom: 12px; display: block; }
+  .cat-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+  .cat-card p { font-size: 13px; color: var(--muted); }
+
+  /* ── PRODUCTS ────────────────────────────── */
+  .products-grid {
+    padding: 0 48px 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1.5px solid #f0e8e0;
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(74,55,40,0.1); }
+
+  .product-img {
+    width: 100%; height: 220px;
+    object-fit: cover; display: block;
+  }
+
+  .product-placeholder {
+    width: 100%; height: 220px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-size: 48px;
+    gap: 8px;
+  }
+  .product-placeholder span { font-size: 13px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+
+  .product-info { padding: 16px; }
+  .product-tag {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .product-name {
+    font-size: 15px; font-weight: 500;
+    margin-bottom: 4px; color: var(--text);
+  }
+  .product-age { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+
+  .product-footer {
+    display: flex; align-items: center;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-size: 17px; font-weight: 600; color: var(--text);
+  }
+  .add-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--text);
+    color: white;
+    border: none;
+    font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, transform .15s;
+    line-height: 1;
+  }
+  .add-btn:hover { background: var(--rose); transform: scale(1.1); }
+
+  /* ── BANNER ──────────────────────────────── */
+  .banner {
+    margin: 0 48px 80px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--lavender), var(--blush));
+    padding: 60px 64px;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 40px;
+    position: relative; overflow: hidden;
+  }
+  .banner::before {
+    content: '🌸';
+    position: absolute; right: 200px; top: 20px;
+    font-size: 80px; opacity: .3;
+  }
+  .banner::after {
+    content: '🌿';
+    position: absolute; right: 120px; bottom: 10px;
+    font-size: 60px; opacity: .25;
+  }
+  .banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; margin-bottom: 12px;
+  }
+  .banner p { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 420px; }
+  .banner-btn {
+    background: var(--text); color: white;
+    border: none; border-radius: 40px;
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+    white-space: nowrap;
+  }
+  .banner-btn:hover { background: var(--rose); transform: translateY(-2px); }
+
+  /* ── AGE GUIDE ───────────────────────────── */
+  .age-guide {
+    background: var(--butter);
+    padding: 64px 48px;
+    margin-bottom: 0;
+  }
+  .age-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; margin-top: 40px;
+  }
+  .age-step {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    border: 1.5px solid #f0e8e0;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .age-step:hover { border-color: var(--rose); transform: translateY(-3px); }
+  .age-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 600;
+    color: var(--rose);
+    margin-bottom: 8px;
+  }
+  .age-step h4 { font-size: 16px; margin-bottom: 6px; }
+  .age-step p { font-size: 13px; color: var(--muted); }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.7);
+    padding: 60px 80px 36px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: white;
+    margin-bottom: 14px;
+  }
+  .footer-brand .logo span { color: var(--rose); }
+  .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 240px; }
+
+  .footer-col h5 {
+    color: white; font-size: 14px; font-weight: 500;
+    margin-bottom: 16px; letter-spacing: .5px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none; font-size: 14px;
+    cursor: pointer; transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: white; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px;
+  }
+
+  /* ── SHOP PAGE ───────────────────────────── */
+  .shop-header {
+    background: linear-gradient(135deg, var(--mint), var(--butter));
+    padding: 60px 80px 40px;
+  }
+  .shop-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; margin-bottom: 8px;
+  }
+  .shop-header p { color: var(--muted); font-size: 16px; }
+
+  .shop-controls {
+    padding: 24px 80px;
+    display: flex; gap: 16px; align-items: center;
+    border-bottom: 1px solid #f0e8e0;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 9px 20px;
+    border-radius: 40px;
+    border: 1.5px solid #e8ddd5;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; cursor: pointer;
+    transition: all .2s;
+    color: var(--text);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--text); color: white; border-color: var(--text);
+  }
+
+  .shop-grid {
+    padding: 40px 80px 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  /* ── ABOUT PAGE ─────────────────────────── */
+  .about-hero {
+    background: linear-gradient(135deg, var(--blush), var(--lavender));
+    padding: 100px 80px;
+    text-align: center;
+  }
+  .about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; margin-bottom: 20px;
+  }
+  .about-hero p {
+    font-size: 18px; color: var(--muted);
+    max-width: 560px; margin: 0 auto; line-height: 1.8;
+  }
+  .values-grid {
+    padding: 80px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .value-card {
+    border-radius: 20px; padding: 36px 28px;
+    text-align: center;
+  }
+  .value-card:nth-child(1) { background: var(--blush); }
+  .value-card:nth-child(2) { background: var(--mint); }
+  .value-card:nth-child(3) { background: var(--butter); }
+  .value-card .icon { font-size: 42px; margin-bottom: 16px; }
+  .value-card h3 { font-size: 20px; margin-bottom: 10px; }
+  .value-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  /* ── CONTACT PAGE ────────────────────────── */
+  .contact-wrap {
+    padding: 80px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .contact-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; margin-bottom: 20px;
+  }
+  .contact-info p {
+    color: var(--muted); font-size: 16px; line-height: 1.8;
+    margin-bottom: 32px;
+  }
+  .contact-detail {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: var(--blush); border-radius: 14px;
+  }
+  .contact-detail .icon { font-size: 22px; }
+  .contact-detail div h4 { font-size: 14px; margin-bottom: 2px; }
+  .contact-detail div p { font-size: 13px; color: var(--muted); margin: 0; }
+
+  .contact-form { background: var(--butter); border-radius: 24px; padding: 40px; }
+  .contact-form h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; margin-bottom: 28px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 13px; font-weight: 500;
+    margin-bottom: 8px; color: var(--text);
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #e8ddd5;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--text);
+    background: white;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--rose);
+  }
+  .form-group textarea { height: 120px; resize: none; }
+
+  .submit-btn {
+    width: 100%; padding: 15px;
+    background: var(--text); color: white;
+    border: none; border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { background: var(--rose); }
+
+  /* ── TOAST ───────────────────────────────── */
+  .toast {
+    position: fixed; bottom: 28px; right: 28px;
+    background: var(--text);
+    color: white; border-radius: 14px;
+    padding: 14px 22px;
+    font-size: 14px;
+    transform: translateY(80px); opacity: 0;
+    transition: all .3s;
+    z-index: 999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── PRODUCT DETAIL ──────────────────────── */
+  .detail-wrap {
+    padding: 60px 80px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .detail-img {
+    border-radius: 28px; overflow: hidden;
+    height: 460px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px;
+  }
+  .detail-info .tag {
+    display: inline-block; margin-bottom: 16px;
+    padding: 6px 16px; border-radius: 40px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .detail-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; margin-bottom: 8px;
+  }
+  .detail-info .age { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+  .detail-info .price {
+    font-size: 32px; font-weight: 600;
+    color: var(--text); margin-bottom: 24px;
+  }
+  .detail-info p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 28px; }
+
+  .size-select { margin-bottom: 28px; }
+  .size-select label { font-size: 13px; font-weight: 500; display: block; margin-bottom: 12px; }
+  .sizes { display: flex; gap: 10px; }
+  .size-btn {
+    width: 44px; height: 44px; border-radius: 10px;
+    border: 1.5px solid #e8ddd5;
+    background: white; font-family: 'DM Sans', sans-serif;
+    font-size: 13px; cursor: pointer; transition: all .2s;
+    color: var(--text);
+  }
+  .size-btn:hover, .size-btn.sel { background: var(--text); color: white; border-color: var(--text); }
+
+  .detail-btns { display: flex; gap: 14px; }
+  .big-add {
+    flex: 1; padding: 15px 28px;
+    background: var(--rose); color: white;
+    border: none; border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .big-add:hover { background: #d88888; transform: translateY(-2px); }
+  .wish-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1.5px solid #e8ddd5; background: white;
+    font-size: 20px; cursor: pointer; transition: all .2s;
+  }
+  .wish-btn:hover { border-color: var(--rose); }
+
+  /* ── CART PANEL ──────────────────────────── */
+  .cart-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(74,55,40,0.3);
+  }
+  .cart-overlay.open { display: block; }
+  .cart-panel {
+    position: fixed; right: 0; top: 0; bottom: 0;
+    width: 380px; background: var(--white);
+    z-index: 201; padding: 32px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .3s;
+  }
+  .cart-overlay.open .cart-panel { transform: translateX(0); }
+  .cart-panel h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; margin-bottom: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-close { font-size: 22px; cursor: pointer; color: var(--muted); }
+  .cart-item {
+    display: flex; gap: 14px; margin-bottom: 20px;
+    padding: 16px; border-radius: 16px;
+    background: var(--blush);
+  }
+  .cart-item-icon { font-size: 36px; }
+  .cart-item-info h4 { font-size: 15px; margin-bottom: 4px; }
+  .cart-item-info p { font-size: 13px; color: var(--muted); }
+  .cart-item-price { font-weight: 600; margin-top: 4px; }
+  .cart-total {
+    border-top: 1.5px solid #f0e8e0;
+    padding-top: 24px; margin-top: 20px;
+    display: flex; justify-content: space-between;
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .checkout-btn {
+    width: 100%; padding: 16px;
+    background: var(--text); color: white;
+    border: none; border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .checkout-btn:hover { background: var(--rose); }
+
+  .empty-cart { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 15px; }
+  .empty-cart .em { font-size: 48px; margin-bottom: 16px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 40px 24px; min-height: auto; }
+    .hero h1 { font-size: 40px; }
+    .categories, .products-grid { grid-template-columns: repeat(2, 1fr); padding: 0 24px 48px; }
+    .shop-grid { grid-template-columns: repeat(2, 1fr); padding: 24px; }
+    .banner { grid-template-columns: 1fr; padding: 40px 24px; margin: 0 24px 48px; }
+    .age-steps { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .contact-wrap, .detail-wrap { grid-template-columns: 1fr; padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">Cotto <span>Mama</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')">Home</a></li>
+    <li><a onclick="showPage('shop')">Shop</a></li>
+    <li><a onclick="showPage('about')">Our Story</a></li>
+    <li><a onclick="showPage('contact')">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-btn" onclick="showPage('shop')">Shop Now</button>
+    <div class="cart-icon" onclick="openCart()">
+      🛒
+      <div class="cart-badge" id="cart-badge">0</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HOME PAGE -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">✨ New Spring Collection 2025</div>
+      <h1>Tiny Threads,<br><em>Big Dreams</em></h1>
+      <p>Soft, playful, and made to last — Cotto Mama crafts every piece with love for your little ones aged 2–5.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('shop')">Shop the Collection</button>
+        <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card" style="background:linear-gradient(135deg,#fde8d8,#f9e4e4);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:90px;flex-direction:column;gap:8px;">
+          👗
+          <span style="font-size:14px;font-family:'DM Sans',sans-serif;color:#9a8880;">Girls Collection</span>
+        </div>
+        <div class="hero-pill">Ages 2–5</div>
+      </div>
+      <div class="hero-card" style="background:linear-gradient(135deg,#d6f0e8,#e8e0f7);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;">👕</div>
+        <div class="hero-pill">Shirts</div>
+      </div>
+      <div class="hero-card" style="background:linear-gradient(135deg,#fdf3d0,#d6f0e8);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;">🎀</div>
+        <div class="hero-pill">Dresses</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Free shipping over ₹999</span><span class="dot">✦</span>
+      <span>Organic cotton fabrics</span><span class="dot">✦</span>
+      <span>Safe & hypoallergenic dyes</span><span class="dot">✦</span>
+      <span>Ages 2–5 years</span><span class="dot">✦</span>
+      <span>New Spring Collection out now</span><span class="dot">✦</span>
+      <span>Free shipping over ₹999</span><span class="dot">✦</span>
+      <span>Organic cotton fabrics</span><span class="dot">✦</span>
+      <span>Safe & hypoallergenic dyes</span><span class="dot">✦</span>
+      <span>Ages 2–5 years</span><span class="dot">✦</span>
+      <span>New Spring Collection out now</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="section-head">
+    <div class="eyebrow">Browse by Category</div>
+    <h2>What Are You Looking For?</h2>
+    <p>Discover our delightful range of clothes designed for curious, active little ones.</p>
+  </div>
+  <div class="categories">
+    <div class="cat-card" onclick="filterAndShop('dresses')">
+      <span class="cat-emoji">👗</span>
+      <h3>Dresses</h3>
+      <p>Twirly & pretty</p>
+    </div>
+    <div class="cat-card" onclick="filterAndShop('shirts')">
+      <span class="cat-emoji">👕</span>
+      <h3>Shirts & Tops</h3>
+      <p>Comfy everyday wear</p>
+    </div>
+    <div class="cat-card" onclick="filterAndShop('sets')">
+      <span class="cat-emoji">🧺</span>
+      <h3>Co-ord Sets</h3>
+      <p>Mix & match fun</p>
+    </div>
+    <div class="cat-card" onclick="filterAndShop('accessories')">
+      <span class="cat-emoji">🎀</span>
+      <h3>Accessories</h3>
+      <p>Little finishing touches</p>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <div class="section-head" style="padding-top:20px;">
+    <div class="eyebrow">Bestsellers</div>
+    <h2>Loved by Little Ones</h2>
+    <p>Our most-adored pieces this season, picked with care and lots of sunshine.</p>
+  </div>
+  <div class="products-grid" id="featured-grid"></div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <div>
+      <h2>Made with Organic Cotton 🌿</h2>
+      <p>Every stitch in our clothing is thoughtfully crafted using GOTS-certified organic cotton — gentle on your baby's skin and kind to the planet.</p>
+    </div>
+    <button class="banner-btn" onclick="showPage('about')">Learn More</button>
+  </div>
+
+  <!-- AGE GUIDE -->
+  <div class="age-guide">
+    <div class="section-head" style="padding:0 0 0 0;">
+      <div class="eyebrow">Size Guide</div>
+      <h2>Find the Perfect Fit</h2>
+      <p>Click an age to browse styles made just for that size.</p>
+    </div>
+    <div class="age-steps">
+      <div class="age-step" onclick="showPage('shop')">
+        <div class="age-num">2Y</div>
+        <h4>2 Years</h4>
+        <p>Height 85–92 cm</p>
+      </div>
+      <div class="age-step" onclick="showPage('shop')">
+        <div class="age-num">3Y</div>
+        <h4>3 Years</h4>
+        <p>Height 92–100 cm</p>
+      </div>
+      <div class="age-step" onclick="showPage('shop')">
+        <div class="age-num">4Y</div>
+        <h4>4 Years</h4>
+        <p>Height 100–108 cm</p>
+      </div>
+      <div class="age-step" onclick="showPage('shop')">
+        <div class="age-num">5Y</div>
+        <h4>5 Years</h4>
+        <p>Height 108–116 cm</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Cotto <span>Mama</span></div>
+        <p>Soft, joyful clothing for little explorers aged 2 to 5. Made with love and organic cotton.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a onclick="filterAndShop('dresses')">Dresses</a></li>
+          <li><a onclick="filterAndShop('shirts')">Shirts & Tops</a></li>
+          <li><a onclick="filterAndShop('sets')">Co-ord Sets</a></li>
+          <li><a onclick="filterAndShop('accessories')">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a onclick="showPage('about')">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Cotto Mama. All rights reserved.</span>
+      <span>Made with 💗 for little ones</span>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════ SHOP PAGE -->
+<div class="page" id="page-shop">
+  <div class="shop-header">
+    <h1>The Collection</h1>
+    <p>Sweet, soft styles for your little explorers — ages 2 to 5 years.</p>
+  </div>
+  <div class="shop-controls">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('dresses',this)">Dresses</button>
+    <button class="filter-btn" onclick="setFilter('shirts',this)">Shirts & Tops</button>
+    <button class="filter-btn" onclick="setFilter('sets',this)">Co-ord Sets</button>
+    <button class="filter-btn" onclick="setFilter('accessories',this)">Accessories</button>
+    <div style="margin-left:auto;font-size:14px;color:var(--muted);" id="count-label">Showing all items</div>
+  </div>
+  <div class="shop-grid" id="shop-grid"></div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Cotto <span>Mama</span></div>
+        <p>Soft, joyful clothing for little explorers aged 2 to 5.</p>
+      </div>
+      <div class="footer-col"><h5>Quick Links</h5><ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('about')">Our Story</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Cotto Mama.</span><span>Made with 💗</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════ ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="hero-tag">Est. 2020</div>
+    <h1>Born from a Mother's Love</h1>
+    <p>Cotto Mama began in a small studio in Mumbai, with a simple belief: children deserve clothes as joyful as they are — soft, colourful, and kind to the earth.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="icon">🌿</div>
+      <h3>Organic Fabrics</h3>
+      <p>All our fabrics are GOTS-certified organic cotton — breathable, soft, and free from harmful chemicals. Safe for your child's skin.</p>
+    </div>
+    <div class="value-card">
+      <div class="icon">🎨</div>
+      <h3>Designed for Joy</h3>
+      <p>Every colour, print, and cut is designed to spark wonder. Our pieces encourage movement, creativity, and play.</p>
+    </div>
+    <div class="value-card">
+      <div class="icon">💚</div>
+      <h3>Sustainably Made</h3>
+      <p>We work with ethical factories and aim for zero waste in our production process. Good for little ones, good for the planet.</p>
+    </div>
+  </div>
+
+  <div style="background:var(--lavender);padding:80px;text-align:center;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:38px;margin-bottom:16px;">Meet the Founder</h2>
+    <div style="width:80px;height:80px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px;">👩</div>
+    <p style="max-width:540px;margin:0 auto;font-size:16px;color:var(--muted);line-height:1.8;">"When my daughter was born, I couldn't find clothes that were both beautiful and gentle on her sensitive skin. So I made my own — and Cotto Mama was born."<br><br><strong>— Priya, Founder & Mama</strong></p>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Cotto <span>Mama</span></div>
+        <p>Soft, joyful clothing for little explorers aged 2 to 5.</p>
+      </div>
+      <div class="footer-col"><h5>Quick Links</h5><ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('shop')">Shop</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Cotto Mama.</span><span>Made with 💗</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════ CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h1>Let's Chat! 💬</h1>
+      <p>Questions about sizing? Want to know more about our fabrics? We'd love to hear from you — we reply within 24 hours!</p>
+      <div class="contact-detail">
+        <div class="icon">📧</div>
+        <div><h4>Email</h4><p>hello@cottomama.com</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">📞</div>
+        <div><h4>Phone</h4><p>+91 98765 43210</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">📍</div>
+        <div><h4>Address</h4><p>Studio 4B, Bandra, Mumbai, 400050</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">🕐</div>
+        <div><h4>Hours</h4><p>Mon–Sat, 10am–6pm IST</p></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="e.g. Meera Sharma">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="meera@example.com">
+      </div>
+      <div class="form-group">
+        <label>Topic</label>
+        <select>
+          <option>Order enquiry</option>
+          <option>Size & fit help</option>
+          <option>Returns & exchanges</option>
+          <option>Wholesale</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="How can we help?"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">Send Message 💌</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Cotto <span>Mama</span></div>
+        <p>Soft, joyful clothing for little explorers aged 2 to 5.</p>
+      </div>
+      <div class="footer-col"><h5>Quick Links</h5><ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('shop')">Shop</a></li>
+        <li><a onclick="showPage('about')">Our Story</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Cotto Mama.</span><span>Made with 💗</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════ PRODUCT DETAIL PAGE -->
+<div class="page" id="page-detail">
+  <div style="padding:24px 80px 0;"><a style="font-size:14px;color:var(--muted);cursor:pointer;text-decoration:none;" onclick="showPage('shop')">← Back to Shop</a></div>
+  <div class="detail-wrap" id="detail-content"></div>
+</div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCartOnOverlay(event)">
+  <div class="cart-panel">
+    <h2>Your Bag <span class="cart-close" onclick="closeCart()">✕</span></h2>
+    <div id="cart-contents"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────
+const products = [
+  { id:1, name:'Blush Petal Dress', category:'dresses', age:'2–3 years', price:799, emoji:'👗', bg:'#fde8d8', color:'#d85a30', tag:'DRESSES', desc:'A dreamy blush-toned dress with delicate petal print. Made from 100% organic cotton. Perfect for park days and family lunches.' },
+  { id:2, name:'Rainbow Stripe Tee', category:'shirts', age:'2–5 years', price:499, emoji:'👕', bg:'#d6f0e8', color:'#0f6e56', tag:'SHIRTS', desc:'Bright pastel rainbow stripes on our softest cotton. Easy pull-on design makes dressing a breeze. Machine washable.' },
+  { id:3, name:'Lavender Smock Dress', category:'dresses', age:'3–4 years', price:899, emoji:'🌸', bg:'#e8e0f7', color:'#534ab7', tag:'DRESSES', desc:'Gathered smocking detail at the chest with a flowy skirt. Beautiful for special occasions or simply every Tuesday.' },
+  { id:4, name:'Mint Ruffle Top', category:'shirts', age:'2–4 years', price:549, emoji:'🎀', bg:'#d6f0e8', color:'#0f6e56', tag:'SHIRTS', desc:'Adorable ruffle trim around the neckline. Pairs beautifully with our linen shorts or any playful bottom.' },
+  { id:5, name:'Sunflower Co-ord Set', category:'sets', age:'3–5 years', price:1199, emoji:'🌻', bg:'#fdf3d0', color:'#854f0b', tag:'SETS', desc:'Matching sunflower-print top and wide-leg trousers. A complete look right out of the box. Children love the bright yellow!' },
+  { id:6, name:'Cloud Print Pyjama Set', category:'sets', age:'2–5 years', price:999, emoji:'☁️', bg:'#e8e0f7', color:'#534ab7', tag:'SETS', desc:'Dreamy cloud-print pyjama set in buttery soft cotton. Elastic waistband and snap buttons. Sleep has never looked this cute.' },
+  { id:7, name:'Strawberry Pinafore', category:'dresses', age:'2–3 years', price:749, emoji:'🍓', bg:'#fde8d8', color:'#993c1d', tag:'DRESSES', desc:'A sweet strawberry-print pinafore that layers over any tee. Adjustable straps. Easily your child\'s most-worn piece.' },
+  { id:8, name:'Pastel Bear Graphic Tee', category:'shirts', age:'3–5 years', price:449, emoji:'🐻', bg:'#fdf3d0', color:'#854f0b', tag:'SHIRTS', desc:'An embroidered bear patch on our signature pastel yellow tee. Relaxed fit for all-day adventures.' },
+  { id:9, name:'Rose Hair Bow Set', category:'accessories', age:'2–5 years', price:299, emoji:'🎀', bg:'#fde8d8', color:'#993556', tag:'ACCESSORIES', desc:'A set of 3 handcrafted ribbon bows in blush, mint, and butter. Clip fastening, suitable for fine baby hair.' },
+  { id:10, name:'Butterfly Embroidery Dress', category:'dresses', age:'4–5 years', price:1099, emoji:'🦋', bg:'#e8e0f7', color:'#534ab7', tag:'DRESSES', desc:'Intricate butterfly embroidery along the hem and collar. A true heirloom piece your little one will treasure.' },
+  { id:11, name:'Lemon Drop Crop Top', category:'shirts', age:'4–5 years', price:499, emoji:'🍋', bg:'#fdf3d0', color:'#854f0b', tag:'SHIRTS', desc:'A breezy lemon-print crop top, perfect for summer. Pairs with our high-waist skirts or denim shorts.' },
+  { id:12, name:'Mini Star Headband', category:'accessories', age:'2–5 years', price:199, emoji:'⭐', bg:'#fdf3d0', color:'#854f0b', tag:'ACCESSORIES', desc:'A soft velvet headband with a tiny star accent. Non-slip interior lining. Available in 4 colours.' },
+];
+
+let cart = [];
+let currentFilter = 'all';
+
+// ── RENDER ────────────────────────────────────────────────────
+function makeCard(p, wide) {
+  return `
+    <div class="product-card" onclick="showDetail(${p.id})">
+      <div class="product-placeholder" style="background:${p.bg};">
+        <span style="font-size:${wide?64:52}px">${p.emoji}</span>
+        <span>${p.tag}</span>
+      </div>
+      <div class="product-info">
+        <div class="product-tag" style="color:${p.color};">${p.tag}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-age">Ages ${p.age}</div>
+        <div class="product-footer">
+          <div class="product-price">₹${p.price}</div>
+          <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})">+</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderFeatured() {
+  const featured = products.slice(0, 4);
+  document.getElementById('featured-grid').innerHTML = featured.map(p => makeCard(p, false)).join('');
+}
+
+function renderShop() {
+  const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
+  document.getElementById('shop-grid').innerHTML = filtered.map(p => makeCard(p, true)).join('');
+  const label = currentFilter === 'all' ? `Showing all ${products.length} items` : `${filtered.length} item${filtered.length!==1?'s':''} in ${currentFilter}`;
+  document.getElementById('count-label').textContent = label;
+}
+
+// ── NAVIGATION ────────────────────────────────────────────────
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo(0, 0);
+  if (name === 'shop') renderShop();
+}
+
+function filterAndShop(cat) {
+  currentFilter = cat;
+  showPage('shop');
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    if (b.textContent.toLowerCase().includes(cat) || (cat==='sets' && b.textContent.includes('Co-ord')) || (cat==='accessories' && b.textContent.includes('Accessories')))
+      b.classList.add('active');
+  });
+  renderShop();
+}
+
+function setFilter(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderShop();
+}
+
+// ── DETAIL ────────────────────────────────────────────────────
+function showDetail(id) {
+  const p = products.find(x => x.id===id);
+  const sizes = ['2Y','3Y','4Y','5Y'];
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-img" style="background:${p.bg};">${p.emoji}</div>
+    <div class="detail-info">
+      <div class="tag" style="background:${p.bg};color:${p.color};">${p.tag}</div>
+      <h1>${p.name}</h1>
+      <div class="age">Ages ${p.age}</div>
+      <div class="price">₹${p.price}</div>
+      <p>${p.desc}</p>
+      <div class="size-select">
+        <label>Select Size</label>
+        <div class="sizes">
+          ${sizes.map((s,i) => `<button class="size-btn${i===0?' sel':''}" onclick="selectSize(this)">${s}</button>`).join('')}
+        </div>
+      </div>
+      <div class="detail-btns">
+        <button class="big-add" onclick="addToCart(${p.id});showToast('Added to bag! 🛍️')">Add to Bag</button>
+        <button class="wish-btn">♡</button>
+      </div>
+      <div style="margin-top:28px;padding:20px;background:var(--mint);border-radius:14px;font-size:13px;color:var(--muted);">
+        🌿 Made from GOTS-certified organic cotton &nbsp;·&nbsp; 🚚 Free shipping over ₹999 &nbsp;·&nbsp; ↩️ Easy 15-day returns
+      </div>
+    </div>`;
+  showPage('detail');
+}
+
+function selectSize(el) {
+  el.closest('.sizes').querySelectorAll('.size-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ── CART ──────────────────────────────────────────────────────
+function addToCart(id) {
+  const p = products.find(x => x.id===id);
+  const ex = cart.find(x => x.id===id);
+  if (ex) ex.qty++;
+  else cart.push({...p, qty:1});
+  updateCartBadge();
+  showToast(`${p.name} added! 🎉`);
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((s,i) => s+i.qty, 0);
+  document.getElementById('cart-badge').textContent = total;
+}
+
+function openCart() {
+  renderCart();
+  document.getElementById('cart-overlay').classList.add('open');
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+
+function closeCartOnOverlay(e) {
+  if (e.target === document.getElementById('cart-overlay')) closeCart();
+}
+
+function renderCart() {
+  const el = document.getElementById('cart-contents');
+  if (!cart.length) {
+    el.innerHTML = '<div class="empty-cart"><div class="em">🛒</div><p>Your bag is empty!<br>Go find something sweet.</p></div>';
+    return;
+  }
+  const total = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  el.innerHTML = cart.map(i => `
+    <div class="cart-item">
+      <div class="cart-item-icon">${i.emoji}</div>
+      <div class="cart-item-info" style="flex:1;">
+        <h4>${i.name}</h4>
+        <p>Ages ${i.age} · Qty ${i.qty}</p>
+        <div class="cart-item-price">₹${i.price * i.qty}</div>
+      </div>
+    </div>`).join('') +
+  `<div class="cart-total"><span>Total</span><span>₹${total}</span></div>
+   <button class="checkout-btn" onclick="showToast('Order placed! 🎉');cart=[];updateCartBadge();closeCart();">Checkout →</button>`;
+}
+
+// ── TOAST ─────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function submitForm() {
+  showToast('Message sent! We\'ll reply soon 💌');
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+renderFeatured();
+renderShop();
+</script>
+</body>
+</html>
